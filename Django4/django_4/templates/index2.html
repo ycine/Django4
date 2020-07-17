@@ -1,0 +1,77 @@
+{% load rest_framework %}
+<html>
+    <head> 
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+<body>
+
+<div class="container">  
+    <div class="row my-row">
+    <div class="col-8 ">
+    <h1>Technologie</h1>
+    <div class="jumbotron jumbotron-fluid">
+    <table class="table">
+        <thead>
+    <tr>
+        <th scope="col">Jezyk</th>
+        <th scope="col">Biblioteka</th>
+        <th scope="col">Rodzaj</th>
+        <th scope="col">Opis</th>
+    </tr>
+
+        {% for i in jezyki %}
+    
+            <tr>
+                <td>{{i.jezyk}}</td>
+
+                {% if i.biblioteka is None %}
+                    <td> puste </td>
+                {% else  %}
+                    <td>{{i.biblioteka}}</td>
+                {% endif %}
+
+                {% if i.rodzaj is None%}
+                    <td> puste </td>
+                {% else  %}
+                    
+                    <td> {{i.rodzaj|join:', '}}</td>
+                    
+                    
+                {% endif %}   
+                
+                <td> {{ i.opis}}</td>
+            </tr>
+    
+        {% endfor %}
+    </table>
+ 
+    </div>
+   
+</div>
+
+    <div class="col-4 ">
+       <h1>Formy</h1>
+        <div class="jumbotron jumbotron-fluid">
+            <form method="post" action="."  class="jumbotron">
+                {% csrf_token %}
+                
+        
+                
+        
+                
+                <!-- Wprowadź Numer: <input type="number" name="numer" class="mb-2"> <br>
+                Wprowadź Imie: <input type="text" name="imie" class="mb-2"> <br>
+                Wprowadź Nazwisko: <input type="text" name="nazwisko" class="mb-2"> <br>
+                Wprowadź Email: <input type="email" name="email" class="mb-2"> <br> -->
+                <!-- <input type="submit" /> -->
+                <button type="submit"  class="btn btn-secondary mt-1">Zatwierdź</button><br>
+            </form>
+        </div>
+
+    </div>
+</div>       
+</div>       
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body></html>
